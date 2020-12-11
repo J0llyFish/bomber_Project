@@ -6,6 +6,7 @@ TagManager:
   tags:
   - terrain
   - Bomber_View
+  - target
   layers:
   - Default
   - TransparentFX

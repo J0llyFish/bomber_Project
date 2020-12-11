@@ -9,8 +9,7 @@ public class BombControl : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        //rigid.AddForce(2000,2000,2000);
-        
+        rigid.velocity = new Vector3(31f,5.2f,45f);
     }
 
     // Update is called once per frame
@@ -18,9 +17,18 @@ public class BombControl : MonoBehaviour
     {
         if(rigid.velocity.magnitude > 0.0001){
             //transform.rotation=Quaternion.Euler(rigid.velocity);
-            transform.rotation = Quaternion.LookRotation(transform.position,transform.position+rigid.velocity);
-        }
+            //transform.rotation = Quaternion.LookRotation(transform.position,transform.position+rigid.velocity);
+            transform.rotation = Quaternion.LookRotation(transform.position,transform.position-rigid.velocity);
+        }   // .LookRotation
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "target"){
+            Debug.Log("Hit!");
+            Destroy(this.gameObject);
+        }
+        
+    }
     
 }

@@ -192,6 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 416207711}
+  - component: {fileID: 416207712}
   m_Layer: 0
   m_Name: drop_bomb_position
   m_TagString: Untagged
@@ -209,10 +210,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -1.89, z: 1.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2056547318}
   m_Father: {fileID: 5006512736576828131}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &416207712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416207710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b10cfae980fad4caafa9ce08588448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 8296172667417362676}
+  bomber_camera: {fileID: 2056547317}
+  y_axis_origin_point: 0
+  drop_position: {fileID: 416207710}
+  bomb: {fileID: 7342901586186784947, guid: 06c9526b2f1fc6848b09d12c0ed83e2a, type: 3}
 --- !u!1 &441866954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: target
       objectReference: {fileID: 0}
+    - target: {fileID: 1325548845028452, guid: c410004c513d4f443a09614a36f7208d, type: 3}
+      propertyPath: m_TagString
+      value: target
+      objectReference: {fileID: 0}
     - target: {fileID: 4603655451484844, guid: c410004c513d4f443a09614a36f7208d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38018.574
@@ -1323,7 +1346,6 @@ GameObject:
   - component: {fileID: 2056547320}
   - component: {fileID: 2056547319}
   - component: {fileID: 2056547321}
-  - component: {fileID: 2056547322}
   m_Layer: 0
   m_Name: third Camera
   m_TagString: Untagged
@@ -1338,12 +1360,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056547317}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -1.51, z: -0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0007921308, y: 0.38021493, z: -1.2606194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5006512736576828131}
-  m_RootOrder: 16
+  m_Father: {fileID: 416207711}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &2056547319
 AudioListener:
@@ -1456,22 +1478,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &2056547322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056547317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b10cfae980fad4caafa9ce08588448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 8296172667417362676}
-  y_axis_origin_point: 0
-  drop_position: {fileID: 416207710}
-  bomb: {fileID: 7342901586186784947, guid: 06c9526b2f1fc6848b09d12c0ed83e2a, type: 3}
 --- !u!1 &129350255872202341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2343,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172667417362672}
-  m_LocalRotation: {x: -0.11677793, y: -0.28389084, z: -0.034857396, w: 0.9510804}
+  m_LocalRotation: {x: -0.12186928, y: 0, z: 0, w: 0.9925462}
   m_LocalPosition: {x: 39183.6, y: 1257, z: 3075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2357,11 +2363,10 @@ Transform:
   - {fileID: 729683045}
   - {fileID: 818326213}
   - {fileID: 1787089489}
-  - {fileID: 2056547318}
   - {fileID: 416207711}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -14, y: -33.24, z: 0}
+  m_LocalEulerAnglesHint: {x: -14, y: 0, z: 0}
 --- !u!1 &5085544329136707829
 GameObject:
   m_ObjectHideFlags: 0
