@@ -17,7 +17,9 @@ MonoBehaviour:
   plane_downward: 115
   plane_rotate_cw: 101
   plane_rotate_ccw: 113
-  plane_rotate_shift_left: 97
-  plane_rotate_shift_right: 100
+  plane_rotate_shift_left: 100
+  plane_rotate_shift_right: 97
   plane_increase_power: 304
   plane_decrease_power: 306
+  cgange_camera: 99
+  drop_bomb: 102

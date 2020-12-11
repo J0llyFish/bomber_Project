@@ -47,7 +47,7 @@ public class PlaneControl : MonoBehaviour
         if(plane_rigid.velocity.magnitude > 10000){
             Time.timeScale = 0;
         }
-        debug();
+        //debug();
     }
     float ttimer = -1;
     void debug(){

@@ -16,4 +16,5 @@ public class KeyMap : ScriptableObject
     public KeyCode plane_increase_power = KeyCode.LeftShift;
     public KeyCode plane_decrease_power = KeyCode.LeftControl;
     public KeyCode cgange_camera = KeyCode.C;
+    public KeyCode drop_bomb = KeyCode.F;
 }

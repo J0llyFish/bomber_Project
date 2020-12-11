@@ -7,6 +7,7 @@ public class BomberControl : MonoBehaviour
     public PlaneControl plane;
     public float y_axis_origin_point = 0;
     // Start is called before the first frame update
+    public GameObject drop_position , bomb;
     void Start()
     {
         
@@ -28,7 +29,20 @@ public class BomberControl : MonoBehaviour
         }else{
             deg = plane.transform.rotation.eulerAngles.x;
         }
-        transform.localRotation = Quaternion.Euler(Mathf.Atan(tan)*180f/Mathf.PI-deg,0,0);
+        transform.localRotation = Quaternion.Euler(Mathf.Atan(tan)*180f/Mathf.PI/*-deg*/,0,0);
         //Debug.Log("tan"+tan);
+
+        if(Input.GetKeyDown(GameController.gameController.keyMap.drop_bomb)){
+            drop_bomb();
+        }
+
+    }
+
+    void drop_bomb(){
+        GameObject new_bomb = Instantiate(bomb);
+        new_bomb.transform.position = drop_position.transform.position;
+        new_bomb.transform.rotation = plane.transform.localRotation;
+        new_bomb.GetComponent<Rigidbody>().velocity = plane.plane_rigid.velocity;
+        
     }
 }
