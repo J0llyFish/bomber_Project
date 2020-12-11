@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91fe8eefeb6b73a42a966aca3a17c213, type: 3}
+  m_Name: KeyMap
+  m_EditorClassIdentifier: 
+  switch_landing: 103
+  plane_onward: 119
+  plane_downward: 115
+  plane_rotate_cw: 101
+  plane_rotate_ccw: 113
+  plane_rotate_shift_left: 97
+  plane_rotate_shift_right: 100
+  plane_increase_power: 304
+  plane_decrease_power: 306
