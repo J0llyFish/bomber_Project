@@ -5,8 +5,8 @@ using UnityEngine;
 public class BombControl : MonoBehaviour
 {
     public Rigidbody rigid;
-    public float f;
     public GameObject fx;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,17 @@ public class BombControl : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "target"){
+            if(collision.gameObject.GetComponent<BuildingControl>() != null){
+                BuildingControl building = collision.gameObject.GetComponent<BuildingControl>();
+                building.hp -= damage;
+                if(building.hp<50){
+                    if(building.flare_position != null){
+                        GameObject go = Instantiate(building.flare);
+                        go.transform.parent = building.transform;
+                        go.transform.position = building.flare_position.transform.position;
+                    }
+                }
+            }
             Debug.Log("Hit!");
             play_sfx(this.gameObject);
             Destroy(this.gameObject);

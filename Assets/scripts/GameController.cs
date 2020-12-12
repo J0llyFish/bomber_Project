@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     }
 
     void Update(){
-        //changeCam();
+        changeCam();
         //pause_hand();
     }
 

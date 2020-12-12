@@ -20,7 +20,8 @@ public class PlaneControl : MonoBehaviour
     public float attack_angle_coeff = 20f;
     [Tooltip("Atmospheric pressure in pa")]
     public float pressure = 101325;
-    [Tooltip("")]
+    [Tooltip("power of pressure in coanda effect calc")]
+    public float pressure_power = 1f;
     public float foil_shape_efficiency_factor = 1f;
     [Tooltip("reference height(sea plane) of 1 atm")]
     public float reference_height = 0;
@@ -89,7 +90,7 @@ public class PlaneControl : MonoBehaviour
         plane_rigid.velocity -= plane_rigid.velocity * aero_resistance * Time.deltaTime;
         //non linear (coanda effect)
         if(plane_rigid.velocity.magnitude >0.001f){
-            calc_buffer = Mathf.Sqrt(plane_rigid.velocity.magnitude) *foil_shape_efficiency_factor* Mathf.Clamp01(dot_product) * pressure * wing_area * Time.deltaTime;
+            calc_buffer = Mathf.Sqrt(plane_rigid.velocity.magnitude) *foil_shape_efficiency_factor* Mathf.Clamp01(dot_product) * Mathf.Pow(pressure,pressure_power) * wing_area * Time.deltaTime;
             if(calc_buffer > 0.0001){
                 plane_rigid.AddRelativeForce(Vector3.up * calc_buffer);
             }
@@ -114,7 +115,7 @@ public class PlaneControl : MonoBehaviour
             calc_buffer = (-plane_rigid.velocity.normalized.x)*wing_vector.x+(-plane_rigid.velocity.normalized.y)*wing_vector.y+(-plane_rigid.velocity.normalized.z)*wing_vector.z;
             //Debug.Log("y_dot_prodcut"+calc_buffer);
             if(calc_buffer > 0.0001){
-                plane_rigid.AddRelativeForce(Vector3.up * calc_buffer * attack_angle_coeff *plane_rigid.velocity.magnitude* wing_area* (pressure/101325f)*Time.deltaTime);
+                plane_rigid.AddRelativeForce(Vector3.up * calc_buffer * attack_angle_coeff *plane_rigid.velocity.magnitude* wing_area* (pressure/101325f)/*Mathf.Pow((pressure/101325f),1.33f)*/*Time.deltaTime);
             }
         }
     }
