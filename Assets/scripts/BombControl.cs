@@ -5,11 +5,12 @@ using UnityEngine;
 public class BombControl : MonoBehaviour
 {
     public Rigidbody rigid;
+    public float f;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        rigid.velocity = new Vector3(31f,5.2f,45f);
+        //rigid.velocity = new Vector3(31f,5.2f,45f);
     }
 
     // Update is called once per frame
@@ -18,7 +19,8 @@ public class BombControl : MonoBehaviour
         if(rigid.velocity.magnitude > 0.0001){
             //transform.rotation=Quaternion.Euler(rigid.velocity);
             //transform.rotation = Quaternion.LookRotation(transform.position,transform.position+rigid.velocity);
-            transform.rotation = Quaternion.LookRotation(transform.position,transform.position-rigid.velocity);
+            //transform.rotation = Quaternion.LookRotation(transform.position,transform.position-rigid.velocity);
+            transform.rotation = Quaternion.LookRotation(rigid.velocity);
         }   // .LookRotation
     }
 
