@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 0}
+  f: 0
+  fx: {fileID: 5758636470571957215, guid: 36b10b17a40892147afd53cf2c1bf661, type: 3}
 --- !u!136 &5102269200521412921
 CapsuleCollider:
   m_ObjectHideFlags: 0

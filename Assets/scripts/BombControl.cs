@@ -6,6 +6,7 @@ public class BombControl : MonoBehaviour
 {
     public Rigidbody rigid;
     public float f;
+    public GameObject fx;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +18,31 @@ public class BombControl : MonoBehaviour
     void Update()
     {
         if(rigid.velocity.magnitude > 0.0001){
-            //transform.rotation=Quaternion.Euler(rigid.velocity);
-            //transform.rotation = Quaternion.LookRotation(transform.position,transform.position+rigid.velocity);
-            //transform.rotation = Quaternion.LookRotation(transform.position,transform.position-rigid.velocity);
             transform.rotation = Quaternion.LookRotation(rigid.velocity);
-        }   // .LookRotation
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "target"){
             Debug.Log("Hit!");
+            play_sfx(this.gameObject);
+            Destroy(this.gameObject);
+        }
+        if(collision.gameObject.tag == "friendly"){
+            Debug.Log("you betrayed motherland!");
+            play_sfx(this.gameObject);
+            Destroy(this.gameObject);
+        }
+        if(collision.gameObject.tag == "terrain"){
+            play_sfx(this.gameObject);
             Destroy(this.gameObject);
         }
         
+    }
+    void play_sfx(GameObject self){
+        GameObject ngo = Instantiate(fx);
+        ngo.transform.position = self.transform.position;
     }
     
 }

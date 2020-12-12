@@ -7,6 +7,8 @@ TagManager:
   - terrain
   - Bomber_View
   - target
+  - FxTemporaire
+  - friendly
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - 
   - PostProcessing
   - BomberView
-  - 
+  - Terrain
   - 
   - 
   - 

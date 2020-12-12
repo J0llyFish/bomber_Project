@@ -15,7 +15,9 @@ public class GameController : MonoBehaviour
         }else{
             Destroy(this.gameObject);
         }
-
+        //startSetCam();
+    }
+    void startSetCam(){
         for(int i=0;i < cameras.Length;i++){
             cameras[i].SetActive(false);
         }
@@ -24,7 +26,8 @@ public class GameController : MonoBehaviour
     }
 
     void Update(){
-        changeCam();
+        //changeCam();
+        //pause_hand();
     }
 
     void changeCam(){
@@ -41,6 +44,24 @@ public class GameController : MonoBehaviour
                 }
                 cameras[camera_index+1].SetActive(true);
                 camera_index++;
+            }
+        }
+    }
+    //public GameObject plane_debug;
+    bool pause = false;
+    void pause_hand(){
+        if(Input.GetKeyDown(KeyCode.F1)){
+            if(!pause){
+                Time.timeScale = 0;
+                pause = true;
+                // if(plane_debug != null){
+                //     Rigidbody rigid = plane_debug.GetComponent<PlaneControl>().plane_rigid;
+                //     Debug.Log("planar="+Mathf.Sqrt(Mathf.Pow(rigid.velocity.x,2)+Mathf.Pow(rigid.velocity.z,2)));
+                //     Debug.Log("vertical="+rigid.velocity.y);
+                // }
+            }else{
+                Time.timeScale = 1;
+                pause = false;
             }
         }
     }
