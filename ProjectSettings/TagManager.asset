@@ -9,6 +9,7 @@ TagManager:
   - target
   - FxTemporaire
   - friendly
+  - AntiAir
   layers:
   - Default
   - TransparentFX
