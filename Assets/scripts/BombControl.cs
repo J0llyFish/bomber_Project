@@ -20,6 +20,9 @@ public class BombControl : MonoBehaviour
         if(rigid.velocity.magnitude > 0.0001){
             transform.rotation = Quaternion.LookRotation(rigid.velocity);
         }
+        if(transform.position.y < -1f){
+            Destroy(this.gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -42,6 +45,13 @@ public class BombControl : MonoBehaviour
         }
         if(collision.gameObject.tag == "friendly"){
             Debug.Log("you betrayed motherland!");
+            if(collision.gameObject.GetComponent<BuildingControl>() != null){
+                for(int i=0;i < collision.gameObject.GetComponent<BuildingControl>().AAs.Length;i++){
+                    if(collision.gameObject.GetComponent<BuildingControl>().AAs[i].GetComponent<AntiAirControl>() != null){
+                        collision.gameObject.GetComponent<BuildingControl>().AAs[i].GetComponent<AntiAirControl>().enabled = true;
+                    }
+                }
+            }
             play_sfx(this.gameObject);
             Destroy(this.gameObject);
         }

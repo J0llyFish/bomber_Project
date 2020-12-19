@@ -17,7 +17,7 @@ public class AntiAirControl : MonoBehaviour
     public float cooling = 0.6f;
     public float phi,theta;
     public float curr_phi=0,curr_theta=0;
-    private bool redirecting = false;
+    //private bool redirecting = false;
     
     void Start()
     {
@@ -93,7 +93,7 @@ public class AntiAirControl : MonoBehaviour
                 n_bullet.transform.position = aimPosition.transform.position;
                 n_bullet.transform.rotation = Quaternion.Euler(aimPosition.transform.position - transform.position);
                 n_bullet.GetComponent<Rigidbody>().velocity = 160 * (aimPosition.transform.position - transform.position);
-                
+                n_bullet.GetComponent<AABulletControl>().AntiAirCannon = this.gameObject;
                 isLoad = false;cooling_timer = cooling;
             }else{
                 if(cooling_timer<=0){

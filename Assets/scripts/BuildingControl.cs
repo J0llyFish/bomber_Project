@@ -9,6 +9,7 @@ public class BuildingControl : MonoBehaviour
     public GameObject flare;
     private float death_timer = 5;
     private float death_speed = 0;
+    public GameObject[] AAs;
     void Start()
     {
         
@@ -27,7 +28,13 @@ public class BuildingControl : MonoBehaviour
         if(death_timer>0){
             death_timer -= Time.deltaTime;
         }else{
+            destory_AA();
             Destroy(this.gameObject);
+        }
+    }
+    void destory_AA(){
+        for(int i=0;i<AAs.Length;i++){
+            Destroy(AAs[i]);
         }
     }
 }
