@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class TitleControl : MonoBehaviour
 {
     
     public AudioSource bgm_title;
     public GameObject choose_mission;
+    public InputField input_name;
     void Start()
     {
         first_settong();
@@ -34,5 +35,8 @@ public class TitleControl : MonoBehaviour
     }
     public void start_mission_one(){
         SceneManager.LoadScene(1);
+    }
+    public void set_name(){
+        
     }
 }

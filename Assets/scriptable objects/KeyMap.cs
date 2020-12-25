@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "KeyMap", menuName = "ScriptableObjects/KeyMap", order = 0)]
 public class KeyMap : ScriptableObject
 {
+    public KeyCode return_to_menu = KeyCode.Escape;
     //[Tooltip("forward")]
     public KeyCode switch_landing = KeyCode.G;
     public KeyCode plane_onward = KeyCode.W;

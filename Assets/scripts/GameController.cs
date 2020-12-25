@@ -6,9 +6,14 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
     public KeyMap keyMap;
+    public PlayerData playerData;
 
     public GameObject[] cameras;
     public int camera_index = 0;
+    // lazy winning detector
+    public int house_destoryed = 0;
+    public bool win = false;
+    public bool lose = false;
     void Awake(){
         if(gameController == null){
             gameController = this;
@@ -28,6 +33,7 @@ public class GameController : MonoBehaviour
     void Update(){
         changeCam();
         pause_hand();
+        windetector();
     }
 
     void changeCam(){
@@ -63,6 +69,14 @@ public class GameController : MonoBehaviour
                 Time.timeScale = 1;
                 pause = false;
             }
+        }
+    }
+
+    void windetector(){
+        if(house_destoryed >= 5){
+            win = true;
+            playerData.win_time ++;
+            playerData.betraying_motherland = false;
         }
     }
 }

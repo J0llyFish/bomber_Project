@@ -11,6 +11,9 @@ public class InGameUIControl : MonoBehaviour
     [Tooltip("deviation of uvRect.x of north and second north")]
     public float degree_360_to_uvRect;
     float uvRect_x_north;
+    public bool ended;
+    public GameObject end_game_GUI;
+    public TMPro.TMP_Text end_title;public TMPro.TMP_Text end_exit_sttring;
     void Start()
     {
         uvRect_x_north = campass.uvRect.x;
@@ -21,6 +24,14 @@ public class InGameUIControl : MonoBehaviour
         setDegree();
         Campass();
         toggleMap();
+        if(!ended){
+            if(GameController.gameController.win){
+                endGame(true);
+            }else if(GameController.gameController.lose){
+                endGame(false);
+            }
+        }
+        return_to_menu();
     }
 
     public float plane_degree;
@@ -51,6 +62,24 @@ public class InGameUIControl : MonoBehaviour
     void toggleMap(){
         if(Input.GetKeyDown(GameController.gameController.keyMap.toggle_map)){
             map.gameObject.SetActive(!map.gameObject.activeSelf);
+        }
+    }
+    public void endGame(bool end_condition){
+        end_game_GUI.SetActive(true);
+        if(end_condition){
+            end_title.text = "you succefully completed the mission!";
+            end_exit_sttring.text = "press " + GameController.gameController.keyMap.return_to_menu
+            + " to return to menu";
+        }else{
+            end_title.text = "you betrayed motherland!";
+            end_exit_sttring.text = "press " + GameController.gameController.keyMap.return_to_menu
+            + " to be send to GULAG";
+        }
+    }
+
+    public void return_to_menu(){
+        if(Input.GetKeyDown(GameController.gameController.keyMap.return_to_menu)){
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
 }

@@ -45,6 +45,9 @@ public class BombControl : MonoBehaviour
         }
         if(collision.gameObject.tag == "friendly"){
             Debug.Log("you betrayed motherland!");
+            //
+            GameController.gameController.lose = true;
+            //
             if(collision.gameObject.GetComponent<BuildingControl>() != null){
                 for(int i=0;i < collision.gameObject.GetComponent<BuildingControl>().AAs.Length;i++){
                     if(collision.gameObject.GetComponent<BuildingControl>().AAs[i].GetComponent<AntiAirControl>() != null){

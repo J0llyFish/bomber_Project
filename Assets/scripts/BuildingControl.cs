@@ -29,6 +29,7 @@ public class BuildingControl : MonoBehaviour
             death_timer -= Time.deltaTime;
         }else{
             destory_AA();
+            GameController.gameController.house_destoryed ++;
             Destroy(this.gameObject);
         }
     }
