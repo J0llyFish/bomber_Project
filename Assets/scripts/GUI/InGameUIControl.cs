@@ -14,6 +14,7 @@ public class InGameUIControl : MonoBehaviour
     public bool ended;
     public GameObject end_game_GUI;
     public TMPro.TMP_Text end_title;public TMPro.TMP_Text end_exit_sttring;
+    public AudioClip lost_music,win_music;
     void Start()
     {
         uvRect_x_north = campass.uvRect.x;
@@ -27,8 +28,10 @@ public class InGameUIControl : MonoBehaviour
         if(!ended){
             if(GameController.gameController.win){
                 endGame(true);
+                ended = !ended;
             }else if(GameController.gameController.lose){
                 endGame(false);
+                ended = !ended;
             }
         }
         return_to_menu();
@@ -70,10 +73,16 @@ public class InGameUIControl : MonoBehaviour
             end_title.text = "you succefully completed the mission!";
             end_exit_sttring.text = "press " + GameController.gameController.keyMap.return_to_menu
             + " to return to menu";
+            GameController.gameController.playerData.win_time ++;
+            GameController.gameController.playerData.betraying_motherland = false;
+            GetComponent<AudioSource>().PlayOneShot(win_music);
         }else{
             end_title.text = "you betrayed motherland!";
             end_exit_sttring.text = "press " + GameController.gameController.keyMap.return_to_menu
             + " to be send to GULAG";
+            GameController.gameController.playerData.lose_time ++;
+            GameController.gameController.playerData.betraying_motherland = true;
+            GetComponent<AudioSource>().PlayOneShot(lost_music);
         }
     }
 

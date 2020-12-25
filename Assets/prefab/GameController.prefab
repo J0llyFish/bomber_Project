@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyMap: {fileID: 11400000, guid: 801d4dcd11f038942ac27a1b3d74e44b, type: 2}
+  playerData: {fileID: 11400000, guid: d19a5391b8baca5439b6dbe13284a9ae, type: 2}
   cameras:
   - {fileID: 0}
   - {fileID: 0}
   camera_index: 0
+  house_destoryed: 0
+  win: 0
+  lose: 0

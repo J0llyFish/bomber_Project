@@ -75,8 +75,6 @@ public class GameController : MonoBehaviour
     void windetector(){
         if(house_destoryed >= 5){
             win = true;
-            playerData.win_time ++;
-            playerData.betraying_motherland = false;
         }
     }
 }
