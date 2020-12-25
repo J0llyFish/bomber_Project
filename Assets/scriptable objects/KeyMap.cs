@@ -17,4 +17,10 @@ public class KeyMap : ScriptableObject
     public KeyCode plane_decrease_power = KeyCode.LeftControl;
     public KeyCode cgange_camera = KeyCode.C;
     public KeyCode drop_bomb = KeyCode.F;
+    //map
+    public KeyCode toggle_map = KeyCode.M;
+    //radio
+    public KeyCode toggle_radio_volume = KeyCode.O;
+    public KeyCode radio_frequency_up = KeyCode.P;
+    public KeyCode radio_frequency_down = KeyCode.I;
 }

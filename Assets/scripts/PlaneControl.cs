@@ -11,6 +11,10 @@ public class PlaneControl : MonoBehaviour
     [Tooltip("engine max power in horse power!")]
     public float max_power = 1600;
     public float power_ratio = 1;
+    [Tooltip("fuel consume rate of 'kilo'watts power per liter of fuel")]
+    public float fuel_consume_rate = 0.0001f;
+    [Tooltip("fuel remaining in liter")]
+    public float fuel = 200f;
     //public float angular_aero_reisitance_coeff = 0.25f;
     [Tooltip("air density in kg/m^3")]
     public float air_density = 1.225f;
@@ -26,6 +30,7 @@ public class PlaneControl : MonoBehaviour
     [Tooltip("reference height(sea plane) of 1 atm")]
     public float reference_height = 0;
     public float distance_sum_debug = 0;
+    public AudioSource plane_sound;
     void Awake(){
         plane_rigid = GetComponent<Rigidbody>();
     }
@@ -44,11 +49,13 @@ public class PlaneControl : MonoBehaviour
         engine_efficiency_control();
         aero_resistance_control();
         attack_angle_control();
+        fuel_control();
         //Debug.Log("v:"+plane_rigid.velocity.magnitude+"x:"+plane_rigid.velocity.x.ToString("0.###")+"y:"+plane_rigid.velocity.y.ToString("0.###")+"z:"+plane_rigid.velocity.z.ToString("0.###"));
         if(plane_rigid.velocity.magnitude > 10000){
             Time.timeScale = 0;
         }
         //debug();
+        audio_control();
     }
     float ttimer = -1;
     void debug(){
@@ -77,11 +84,12 @@ public class PlaneControl : MonoBehaviour
         //at 25C
         pressure = 101325f * Mathf.Clamp01(Mathf.Exp((float)(-0.000118575*transform.position.y+reference_height)));
     }
+    float engine_exported_power;
     void engine_control(){
         power_ratio = Mathf.Clamp01(power_ratio);
         plane_rigid.AddRelativeForce(Vector3.forward * max_power * 745.48f * power_ratio * pressure/101325f * Time.deltaTime);
+        engine_exported_power = max_power * 745.48f * power_ratio * pressure/101325f;
         propellerControll.enginePowerCoeff += power_ratio * Time.deltaTime;
-        
     }
     float calc_buffer;
 
@@ -118,6 +126,14 @@ public class PlaneControl : MonoBehaviour
                 plane_rigid.AddRelativeForce(Vector3.up * calc_buffer * attack_angle_coeff *plane_rigid.velocity.magnitude* wing_area* (pressure/101325f)/*Mathf.Pow((pressure/101325f),1.33f)*/*Time.deltaTime);
             }
         }
+    }
+
+    void audio_control(){
+        plane_sound.volume = power_ratio * 0.5f;
+    }
+
+    void fuel_control(){
+        fuel -= fuel_consume_rate * engine_exported_power / 1000f * Time.deltaTime;
     }
 
     

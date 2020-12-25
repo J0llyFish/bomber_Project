@@ -11,6 +11,7 @@ public class BomberControl : MonoBehaviour
     public GameObject drop_position , bomb;
     public float terrain_height = 0;
     public LayerMask layer_mask_for_terrain;
+    public AudioSource bomb_audio;
     void Start()
     {
         
@@ -71,5 +72,6 @@ public class BomberControl : MonoBehaviour
         //Debug.Log(plane.plane_rigid.velocity);
         new_bomb.GetComponent<Rigidbody>().velocity = new Vector3(plane.plane_rigid.velocity.x,plane.plane_rigid.velocity.y,plane.plane_rigid.velocity.z);
         //Debug.Log(new_bomb.GetComponent<Rigidbody>().velocity);
+        bomb_audio.PlayOneShot(bomb_audio.clip);
     }
 }
