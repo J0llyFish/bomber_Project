@@ -27,6 +27,7 @@ public class TitleControl : MonoBehaviour
     }
 
     void first_settong(){
+        Cursor.visible = true;
         bgm_title.time = 2.45f;
         if(playerData.player_name == "unknown"){
             set_name_gui.SetActive(true);

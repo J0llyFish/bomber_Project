@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public bool win = false;
     public bool lose = false;
     void Awake(){
+        Cursor.visible = false;
         if(gameController == null){
             gameController = this;
         }else{
