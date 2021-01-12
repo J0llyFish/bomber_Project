@@ -10,4 +10,5 @@ public class PlayerData : ScriptableObject
     public int win_time = 0;
     public int lose_time = 0;
     public bool betraying_motherland = false;
+    public int medaled = 0;
 }

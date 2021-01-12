@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public int house_destoryed = 0;
     public bool win = false;
     public bool lose = false;
+    public int min_win_house_destroyed = 10;
     void Awake(){
         Cursor.visible = false;
         if(gameController == null){
@@ -74,7 +75,7 @@ public class GameController : MonoBehaviour
     }
 
     void windetector(){
-        if(house_destoryed >= 5){
+        if(house_destoryed >= min_win_house_destroyed){
             win = true;
         }
     }

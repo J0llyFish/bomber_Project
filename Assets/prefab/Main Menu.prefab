@@ -960,6 +960,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456645819742669999}
   m_CullTransparentMesh: 0
+--- !u!1 &619151100238363622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 131173344370898226}
+  - component: {fileID: 490174871511079046}
+  - component: {fileID: 5140241610225021183}
+  m_Layer: 5
+  m_Name: medal_img
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &131173344370898226
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619151100238363622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7682859716129228242}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: 1}
+  m_SizeDelta: {x: 284, y: 560}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &490174871511079046
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619151100238363622}
+  m_CullTransparentMesh: 0
+--- !u!114 &5140241610225021183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619151100238363622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1c82b21f37b21c64dba14bf606dcba9f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1014875195741472744
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,7 +4430,7 @@ MonoBehaviour:
     poor people who is starving becouse of captialists' tyranny.We are going to deliver
     chrismas gift to the poor ! Comrade Joseph Santa has order you to execute this
     plan.\n\n    mission information\nKirovgrad Military District Aviation Group\n1st
-    X-Mas CAS Squadren\n\nObjective : distribution special gift to least 5 Building
+    X-Mas CAS Squadren\n\nObjective : distribution special gift to least 10 Building
     across two major cities\n\navailable sleigh : Ilyushin X-Mas Close Air Support
     Plane\n\nAmmunation : infinite\n\nnote : be wared of enemy anti-ait guns\n"
 --- !u!1 &4387487081763407996
@@ -6747,7 +6821,8 @@ MonoBehaviour:
   lost_text: {fileID: 7370872730496980326}
   quit_gui_text: {fileID: 4387487082536488965}
   BG: {fileID: 4387487081383463392}
-  title_alternative: {fileID: 21300000, guid: 608d8c0a75ab26442b924a10cae0a97f, type: 3}
+  title_alternative: {fileID: 21300000, guid: 196297d9c74100b4b9a8333cb9da5c1b, type: 3}
+  player_medal: {fileID: 5140241610225021183}
 --- !u!1 &5918237962916673740
 GameObject:
   m_ObjectHideFlags: 0
@@ -10623,6 +10698,7 @@ RectTransform:
   - {fileID: 4069658583557877538}
   - {fileID: 1744523242756562975}
   - {fileID: 8985648913716897517}
+  - {fileID: 131173344370898226}
   m_Father: {fileID: 5884820223251154271}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

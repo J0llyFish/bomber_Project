@@ -87,6 +87,10 @@ public class PlaneControl : MonoBehaviour
     float engine_exported_power;
     void engine_control(){
         power_ratio = Mathf.Clamp01(power_ratio);
+        if(fuel <=0){
+            power_ratio = 0;
+            fuel =0;
+        }
         plane_rigid.AddRelativeForce(Vector3.forward * max_power * 745.48f * power_ratio * pressure/101325f * Time.deltaTime);
         engine_exported_power = max_power * 745.48f * power_ratio * pressure/101325f;
         propellerControll.enginePowerCoeff += power_ratio * Time.deltaTime;

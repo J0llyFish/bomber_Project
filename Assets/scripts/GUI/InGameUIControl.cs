@@ -15,6 +15,9 @@ public class InGameUIControl : MonoBehaviour
     public GameObject end_game_GUI;
     public TMPro.TMP_Text end_title;public TMPro.TMP_Text end_exit_sttring;
     public AudioClip lost_music,win_music;
+    public Image bomb_position_aim;
+    public int bomb_camera_index =2;
+    public GameObject plane_information_gui;
     void Start()
     {
         uvRect_x_north = campass.uvRect.x;
@@ -35,6 +38,8 @@ public class InGameUIControl : MonoBehaviour
             }
         }
         return_to_menu();
+        close_end_game_GUI();toggle_information_GUI();
+        bomb_position_gui_control();
     }
 
     public float plane_degree;
@@ -72,23 +77,49 @@ public class InGameUIControl : MonoBehaviour
         if(end_condition){
             end_title.text = "you succefully completed the mission!";
             end_exit_sttring.text = "press " + GameController.gameController.keyMap.return_to_menu
-            + " to return to menu";
+            + " to return to menu\n"+"press "+GameController.gameController.keyMap.control_key+" to continue";
             GameController.gameController.playerData.win_time ++;
             GameController.gameController.playerData.betraying_motherland = false;
             GetComponent<AudioSource>().PlayOneShot(win_music);
         }else{
             end_title.text = "you betrayed motherland!";
             end_exit_sttring.text = "press " + GameController.gameController.keyMap.return_to_menu
-            + " to be send to GULAG";
+            + " to be send to GULAG\n"+"press "+GameController.gameController.keyMap.control_key+" to continue";
             GameController.gameController.playerData.lose_time ++;
             GameController.gameController.playerData.betraying_motherland = true;
             GetComponent<AudioSource>().PlayOneShot(lost_music);
         }
     }
 
+    public void close_end_game_GUI(){
+        if(Input.GetKeyDown(GameController.gameController.keyMap.control_key)){
+            end_game_GUI.SetActive(false);
+        }
+    }
+
     public void return_to_menu(){
         if(Input.GetKeyDown(GameController.gameController.keyMap.return_to_menu)){
+            if(GameController.gameController.house_destoryed >= 20){
+                GameController.gameController.playerData.medaled = 1;
+            }
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+    }
+
+    public void bomb_position_gui_control(){
+        if(GameController.gameController.camera_index == bomb_camera_index){
+            if(!bomb_position_aim.gameObject.activeSelf){
+                bomb_position_aim.gameObject.SetActive(true);
+            }
+        }else{
+            if(bomb_position_aim.gameObject.activeSelf){
+                bomb_position_aim.gameObject.SetActive(false);
+            }
+        }
+    }
+    void toggle_information_GUI(){
+        if(Input.GetKeyDown(GameController.gameController.keyMap.control_key)){
+            plane_information_gui.SetActive(!plane_information_gui.activeSelf);
         }
     }
 }

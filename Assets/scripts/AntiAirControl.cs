@@ -95,6 +95,7 @@ public class AntiAirControl : MonoBehaviour
                 n_bullet.GetComponent<Rigidbody>().velocity = 160 * (aimPosition.transform.position - transform.position);
                 n_bullet.GetComponent<AABulletControl>().AntiAirCannon = this.gameObject;
                 isLoad = false;cooling_timer = cooling;
+                GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
             }else{
                 if(cooling_timer<=0){
                     isLoad = true;

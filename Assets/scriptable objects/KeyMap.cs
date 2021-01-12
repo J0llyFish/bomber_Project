@@ -6,6 +6,7 @@ using UnityEngine;
 public class KeyMap : ScriptableObject
 {
     public KeyCode return_to_menu = KeyCode.Escape;
+    public KeyCode control_key = KeyCode.Return;
     //[Tooltip("forward")]
     public KeyCode switch_landing = KeyCode.G;
     public KeyCode plane_onward = KeyCode.W;
