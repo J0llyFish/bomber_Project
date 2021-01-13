@@ -43,6 +43,14 @@ public class AABulletControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("plane get hit!");
+        if(collision.gameObject.tag == "Player"){
+            collision.gameObject.GetComponent<PlaneControl>().times_get_hit ++;
+            if(no_hit_fx != null){
+                GameObject ng = Instantiate(no_hit_fx);
+                ng.transform.position = transform.position;
+            }
+            Destroy(this.gameObject);
+        }
+        //Debug.Log("plane get hit!");
     }
 }

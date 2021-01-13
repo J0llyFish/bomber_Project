@@ -31,6 +31,7 @@ public class PlaneControl : MonoBehaviour
     public float reference_height = 0;
     public float distance_sum_debug = 0;
     public AudioSource plane_sound;
+    public int times_get_hit = 0;
     void Awake(){
         plane_rigid = GetComponent<Rigidbody>();
     }
@@ -82,9 +83,12 @@ public class PlaneControl : MonoBehaviour
         //Debug.Log(plane_vector.magnitude);
         dot_product = plane_rigid.velocity.normalized.x * plane_vector.x + plane_rigid.velocity.normalized.y * plane_vector.y + plane_rigid.velocity.normalized.z * plane_vector.z;
         //at 25C
-        pressure = 101325f * Mathf.Clamp01(Mathf.Exp((float)(-0.000118575*transform.position.y+reference_height)));
+        pressure = 101325f * Mathf.Clamp01(Mathf.Exp((float)(-0.000118575*(transform.position.y+reference_height))));
     }
     float engine_exported_power;
+    public float get_engine_exported_power(){
+        return engine_exported_power;
+    }
     void engine_control(){
         power_ratio = Mathf.Clamp01(power_ratio);
         if(fuel <=0){

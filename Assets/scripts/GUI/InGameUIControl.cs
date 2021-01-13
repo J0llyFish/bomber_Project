@@ -18,8 +18,10 @@ public class InGameUIControl : MonoBehaviour
     public Image bomb_position_aim;
     public int bomb_camera_index =2;
     public GameObject plane_information_gui;
+    public RadioControl radio_control;
     void Start()
     {
+        radio_control = FindObjectOfType<RadioControl>();
         uvRect_x_north = campass.uvRect.x;
     }
 

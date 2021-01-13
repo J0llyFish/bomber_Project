@@ -507,10 +507,11 @@ MonoBehaviour:
   attack_angle_coeff: 1200
   pressure: 101325
   pressure_power: 0.96
-  foil_shape_efficiency_factor: 0.075
+  foil_shape_efficiency_factor: 0.105
   reference_height: 250
   distance_sum_debug: 0
   plane_sound: {fileID: 7183942662644405269}
+  times_get_hit: 0
   plane_vector: {x: 0, y: 0, z: 0}
   wing_vector: {x: 0, y: 0, z: 0}
 --- !u!114 &3627981333273764070
