@@ -16,6 +16,7 @@ public class TitleControl : MonoBehaviour
     public TMPro.TMP_Text quit_gui_text;public Image BG;
     public Sprite title_alternative;
     public Image player_medal;
+    public GameObject key_setting;
     void Start()
     {
         if(playerData.player_name == "unknown"){
@@ -119,5 +120,12 @@ public class TitleControl : MonoBehaviour
             PlayerPrefs.SetInt("betraying_motherland",0);
         }
         PlayerPrefs.SetInt("medaled",playerData.medaled);
+    }
+
+    public void open_key_set(){
+        key_setting.SetActive(true);
+    }
+    public void close_key_set(){
+        key_setting.SetActive(false);
     }
 }
