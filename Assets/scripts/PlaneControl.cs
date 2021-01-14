@@ -103,7 +103,7 @@ public class PlaneControl : MonoBehaviour
 
     void aero_resistance_control(){
         //linear
-        plane_rigid.velocity -= plane_rigid.velocity * aero_resistance * Time.deltaTime;
+        plane_rigid.velocity -= plane_rigid.velocity * aero_resistance * Time.deltaTime * (pressure/101325);
         //non linear (coanda effect)
         if(plane_rigid.velocity.magnitude >0.001f){
             calc_buffer = Mathf.Sqrt(plane_rigid.velocity.magnitude) *foil_shape_efficiency_factor* Mathf.Clamp01(dot_product) * Mathf.Pow(pressure,pressure_power) * wing_area * Time.deltaTime;

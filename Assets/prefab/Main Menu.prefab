@@ -8945,7 +8945,7 @@ MonoBehaviour:
   player_name_text: {fileID: 5327897444751121517}
   win_text: {fileID: 4686525816113140718}
   lost_text: {fileID: 7370872730496980326}
-  quit_gui_text: {fileID: 4387487082536488965}
+  quit_gui_text: {fileID: 8860399182986864397}
   BG: {fileID: 4387487081383463392}
   title_alternative: {fileID: 21300000, guid: 196297d9c74100b4b9a8333cb9da5c1b, type: 3}
   player_medal: {fileID: 5140241610225021183}
